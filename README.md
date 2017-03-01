@@ -17,7 +17,7 @@ To preserve the name for its original owner, we renamed this project to hey.
 
 ## Installation
 
-    go get -u github.com/rakyll/hey
+    go get -u github.com/512444693/hey
 
 ## Usage
 
