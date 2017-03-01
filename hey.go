@@ -71,7 +71,8 @@ var (
 	disableKeepAlives  = flag.Bool("disable-keepalive", false, "")
 	proxyAddr          = flag.String("x", "", "")
 
-	enableTrace = flag.Bool("more", false, "")
+	enableTrace    = flag.Bool("more", false, "")
+	disableChunked = flag.Bool("disable-chunked", false, "")
 )
 
 var usage = `Usage: hey [options...] <url>
@@ -106,6 +107,7 @@ Options:
                         (default for current machine is %d cores)
   -more                 Provides information on DNS lookup, dialup, request and
                         response timings.
+  -disable-chunked	Disable chunked.
 `
 
 func main() {
@@ -203,6 +205,10 @@ func main() {
 	// set host header if set
 	if *hostHeader != "" {
 		req.Host = *hostHeader
+	}
+
+	if *disableChunked {
+		req.ContentLength = int64(len(bodyAll))
 	}
 
 	(&requester.Work{
