@@ -58,4 +58,5 @@ Options:
                         (default for current machine is 8 cores)
   -more                 Provides information on DNS lookup, dialup, request and
                         response timings.
+  -disable-chunked	    Disable chunked.
 ```
